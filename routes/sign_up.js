@@ -20,8 +20,11 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     if (email) {
       return res.status(400).json({ message: "this mail is already existed" });
     } else {
+      console.log(req.files);
       const avatar = req.files.avatar;
+
       console.log(avatar);
+
       const convertToBase64 = (file) => {
         return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
       };
